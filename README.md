@@ -2,4 +2,6 @@
 # 𝗦𝗮𝗻𝗲𝗺𝗶-𝗕𝗼𝘁
 ꜱᴀɴᴇᴍɪ, ᴛʜᴇ ᴘᴏᴡᴇʀꜰᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ɢᴀᴍᴇ ʙᴏᴛ, ᴛᴀᴋᴇꜱ ɪɴꜱᴘɪʀᴀᴛɪᴏɴ ꜰʀᴏᴍ ᴛʜᴇ ʟᴇɢᴇɴᴅᴀʀʏ ᴄʜᴀʀᴀᴄᴛᴇʀ ɪɴ ᴛʜᴇ ᴅᴇᴍᴏɴ ꜱʟᴀʏᴇʀ. ꜱᴀɴᴇᴍɪ ɪꜱ ᴇQᴜɪᴘᴘᴇᴅ ᴡɪᴛʜ ᴀ ᴡɪᴅᴇ ʀᴀɴɢᴇ ᴏꜰ ꜰᴇᴀᴛᴜʀᴇꜱ, ᴅᴇꜱɪɢɴᴇᴅ ᴛᴏ ᴘʀᴏᴠɪᴅᴇ ᴀɴ ᴇxᴄᴇᴘᴛɪᴏɴᴀʟ ɢᴀᴍɪɴɢ ᴇxᴘᴇʀɪᴇɴᴄᴇ. ꜱᴀɴᴇᴍɪ ɪꜱ ʜᴇʀᴇ ᴛᴏ ᴇɴʜᴀɴᴄᴇ ʏᴏᴜʀ ɢᴀᴍɪɴɢ ᴊᴏᴜʀɴᴇʏ.ɢᴇᴛ ʀᴇᴀᴅʏ ᴛᴏ ᴅᴇʟᴠᴇ ɪɴᴛᴏ ᴀɴ ᴜɴᴘᴀʀᴀʟʟᴇʟᴇᴅ ɢᴀᴍɪɴɢ ᴀᴅᴠᴇɴᴛᴜʀᴇ ᴡɪᴛʜ ꜱᴀɴᴇᴍɪ ʙʏ ʏᴏᴜʀ ꜱɪᴅᴇ!
 <img src="https://telegra.ph/file/7cffb4a678c1bfc4ebaff.png">
-<a href="https://github.com/definatelynotchirag/Sanemi-Robot"><img src="https://telegra.ph/file/fd8157f3ddec4b726d0b7.png" alt="Github" /></a>
+<a href="https://github.com/definatelynotchirag/Sanemi-Robot"><img src="https://telegra.ph/file/fd8157f3ddec4b726d0b7.png" alt="Github" /></a> <a href="https://github.com/definatelynotchirag/Sanemi-Robot"><img src="https://telegra.ph/file/fd8157f3ddec4b726d0b7.png" alt="Github" /></a>
+
+
