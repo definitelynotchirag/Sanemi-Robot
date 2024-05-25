@@ -15,7 +15,9 @@
 <a href="https://pypi.org/project/Telethon/"> <img src="https://img.shields.io/pypi/v/telethon?color=white&label=telethon&logo=python&logoColor=blue&style=for-the-badge" /></a>
 <a href="https://pypi.org/project/Pyrogram/"> <img src="https://img.shields.io/pypi/v/pyrogram?color=white&label=pyrogram&logo=python&logoColor=blue&style=for-the-badge" /></a>
 
-                            『 𝗦𝗨𝗣𝗣𝗢𝗥𝗧 』
+<h3 align="center">
+    『 𝗦𝗨𝗣𝗣𝗢𝗥𝗧 』
+</h3>
 <p align="center">
 <a href="https://telegram.me/Sanemi_Support"><img src="https://img.shields.io/badge/-Support%20Group-black.svg?style=for-the-badge&logo=Telegram" alt="support" /></a>
 <p align="center">
