@@ -14,7 +14,7 @@
 
 <img src="https://telegra.ph/file/6f33d7f279c4fb2d2779c.png">
 <p align="center">
-<a href="https://telegram.me/Sanemi_Support"><img src="https://img.shields.io/badge/-Support%20Group-black.svg?style=for-the-badge&logo=Telegram" /></a>
+<a href="https://telegram.me/Sanemi_Support"><img src="https://img.shields.io/badge/-Support%20Group-black.svg?style=for-the-badge&logo=Telegram" alt="support" /></a>
 <p align="center">
-<a href="https://telegram.me/Sanemi_Updates"><img src="https://img.shields.io/badge/-Update%20Channel-black.svg?style=for-the-badge&logo=Telegram" /></a>
+<a href="https://telegram.me/Sanemi_Updates"><img src="https://img.shields.io/badge/-Update%20Channel-black.svg?style=for-the-badge&logo=Telegram" alt="updates" /></a>
 
