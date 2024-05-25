@@ -16,5 +16,5 @@
 <a href="https://telegram.me/Sanemi_Support"><img src="https://img.shields.io/badge/-Support%20Group-black.svg?style=for-the-badge&logo=Telegram"></a>
 </p>
 <p align="center">
-<a href="https://telegram.me/Sanemi_Updates"><img src="https://img.shields.io/badge/-Support%20Channel-blue.svg?style=for-the-badge&logo=Telegram"></a>
+<a href="https://telegram.me/Sanemi_Updates"><img src="https://img.shields.io/badge/-Update%20Channel-black.svg?style=for-the-badge&logo=Telegram"></a>
 </p>
