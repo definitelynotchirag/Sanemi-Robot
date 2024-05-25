@@ -16,6 +16,7 @@
 <a href="https://pypi.org/project/Pyrogram/"> <img src="https://img.shields.io/pypi/v/pyrogram?color=white&label=pyrogram&logo=python&logoColor=blue&style=for-the-badge" /></a>
 
 <img src="https://telegra.ph/file/6f33d7f279c4fb2d2779c.png">
+#『 sᴜᴩᴩᴏʀᴛ 』
 <p align="center">
 <a href="https://telegram.me/Sanemi_Support"><img src="https://img.shields.io/badge/-Support%20Group-black.svg?style=for-the-badge&logo=Telegram" alt="support" /></a>
 <p align="center">
