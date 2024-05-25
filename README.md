@@ -13,7 +13,7 @@
 <a href="https://pypi.org/project/Pyrogram/"> <img src="https://img.shields.io/pypi/v/pyrogram?color=white&label=pyrogram&logo=python&logoColor=blue&style=for-the-badge" /></a>
 
 <p align="center">
-<a href="https://telegram.me/Sanemi_Support"><img src="https://img.shields.io/badge/-Support%20Group-black.svg?style=for-the-badge&logo=Telegram"></a>
+<a href="https://telegram.me/Sanemi_Support"><img src="https://img.shields.io/badge/-Support%20Group-black.svg?style=for-the-badge&logo=Telegram" /></a>
 <p align="center">
-<a href="https://telegram.me/Sanemi_Updates"><img src="https://img.shields.io/badge/-Update%20Channel-black.svg?style=for-the-badge&logo=Telegram"></a>
+<a href="https://telegram.me/Sanemi_Updates"><img src="https://img.shields.io/badge/-Update%20Channel-black.svg?style=for-the-badge&logo=Telegram" /></a>
 </p>
