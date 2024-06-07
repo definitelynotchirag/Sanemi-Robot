@@ -1,7 +1,10 @@
 import importlib
 import os
-from SanemiBot import bot
+from SanemiBot import bot,log_channel,init_pool
 from telethon import events
+import asyncio
+from SanemiBot.utils import user
+
 
 def import_all_modules(folder_path):
     for file_name in os.listdir(folder_path):
@@ -18,11 +21,47 @@ async def start(event):
 @bot.on(events.NewMessage(pattern="/help"))
 async def help(event):
     await event.respond('What Help Do You Need?');
+
+
+@bot.on(events.NewMessage(pattern="/wallet"))
+async def wallet(event):
+    try:
+        user_id = event.from_id.user_id
+    except Exception as e:
+        user_id = event.peer_id.user_id
+        
+    try:
+        wallet = await user.getwallet(user_id=user_id)
+    except Exception as e:
+        msg = f'''
+        NEW ERROR HAS OCCURED:\n
+        {str(e)}
+        '''
+        await bot.send_message(log_channel,msg)
+        
+    await event.respond(f'Your Wallet: {wallet}');
+
+@bot.on(events.NewMessage)
+async def adduser(event):
+    try:
+        user_id = event.from_id.user_id
+    except Exception as e:
+        user_id = event.peer_id.user_id
+        
+    try:
+        await user.checkadduser(user_id=user_id)
+    except Exception as e:
+        msg = f'''
+        NEW ERROR HAS OCCURED:\n
+        {str(e)}
+        '''
+        
+        await bot.send_message(log_channel,msg)
     
-
-
-
-            
+                 
 if __name__ == "__main__":
     import_all_modules('SanemiBot/modules')
+    import_all_modules('SanemiBot/utils')
+    loop = asyncio.get_event_loop()
     bot.run_until_disconnected();
+    loop.close()

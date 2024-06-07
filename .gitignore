@@ -2,3 +2,4 @@ bot.session
 .env
 bot.session-journal
 __pycache__
+log.txt
