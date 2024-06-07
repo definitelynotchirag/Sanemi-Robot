@@ -1,0 +1,132 @@
+KEPT FOR REFERENCE BRO
+
+# from telethon.sync import TelegramClient
+# from telethon import events
+# import os
+# from dotenv import load_dotenv,dotenv_values;
+# import requests
+# import psycopg2;
+# from psycopg2 import sql
+# import time,datetime
+# import pymongo
+# import importlib,sys
+
+# load_dotenv()
+
+# conn = psycopg2.connect(
+#     host=os.getenv("DBHOST"),
+#     database=os.getenv("DBNAME"),
+#     user=os.getenv("DBUSER"),
+#     password=os.getenv("DBPASSWORD"),
+#     )
+
+# modules_path = os.path.join(os.path.dirname(__file__), 'modules')
+# if modules_path not in sys.path:
+#     sys.path.append(modules_path)
+    
+# def import_all_modules(folder_path):
+#     for file_name in os.listdir(folder_path):
+#         if file_name.endswith('.py'):
+#             module_name = file_name[:-3]
+#             importlib.import_module(module_name)
+            
+            
+# mongoclient = pymongo.MongoClient(os.getenv('MONGODB'))
+
+# mydb = mongoclient["testing"]
+
+# mycol = mydb["users"]
+
+
+# cur = conn.cursor()
+
+# api_id = os.getenv("API_ID")
+# api_hash = os.getenv("API_HASH")
+# bot_token = os.getenv("BOT_TOKEN")
+# url = "http://localhost:5000/"
+# # We have to manually call "start" if we want an explicit bot token
+# bot = TelegramClient('bot', api_id, api_hash).start(bot_token=bot_token)
+# timestamp = datetime.datetime(2024, 5, 27, 19, 59, 2, 450434, tzinfo=datetime.timezone.utc)
+
+# def getall():
+#     cur.execute("SELECT * from user_list")
+#     row = cur.fetchone();
+#     print(row);
+#     return str(row);
+        
+# @bot.on(events.NewMessage(pattern='/start'))
+# async def start(event):
+#     await event.respond('Hi!I am Sanemi A Game Bot Based on Anime Demon Slayer!')
+#     raise events.StopPropagation
+
+# @bot.on(events.NewMessage(pattern="/help"))
+# async def help(event):
+#     await event.respond('What Help Do You Need?');
+    
+    
+# @bot.on(events.NewMessage(pattern='/sql'))
+# async def allusers(event):
+#     user_id = event.from_id.user_id
+
+#     timestamp = datetime.datetime(2024, 5, 27, 19, 59, 2, 450434, tzinfo=datetime.timezone.utc)
+#     score = 200
+
+#     # Insert query using parameterized statement
+#     try:
+#         query = sql.SQL('INSERT INTO user_list (user_id, created_at, wallet) VALUES (%s, %s, %s)')
+#         rl = cur.execute(query, (user_id, timestamp, score))
+#     except (psycopg2.DatabaseError, Exception) as error:
+#         await event.respond(str(error))
+        
+#     cur.execute(f'SELECT user_id, wallet FROM user_list WHERE user_id={user_id}')
+#     row = cur.fetchone()
+#     await event.respond(f"I have inserted you to SQL Database. You Are:\n {str(row)}")
+    
+# # @bot.on(events.NewMessage(pattern="/ping"))
+# # async def ping(event):
+# #     start = time.time()
+# #     message = await event.respond('Pong!')
+# #     end = time.time()
+# #     response_time = int((end - start) * 1000)  
+# #     await bot.edit_message(event.chat_id, message.id, f'Pong! 🏓\nResponse time: {response_time} ms')
+    
+    
+# @bot.on(events.NewMessage(pattern='/mongo'))
+# async def api(event):
+#     user_id = event.from_id
+#     result = mycol.insert_one({'user_id':f'{user_id}'});
+#     if(result):
+#         await event.respond(f"I have inserted you to mongo Database. You Are:\n{mycol.find_one({'user_id':f'{user_id}'})}")
+    
+# # @bot.on(events.NewMessage)
+# # async def adduser(event):
+# #     user_id = event.peer_id
+# #     print(int(user_id.user_id));
+# #     body = dict(user_id=int(user_id.user_id), wallet= 0)
+# #     response = requests.post(url+"adduser", data=body)
+# #     await event.respond("I Have Added You to the Database");
+    
+    
+# # @bot.on(events.NewMessage(pattern='/api'))
+# # async def api(event):
+# #     user_id = event.peer_id
+# #     await event.respond(event.from_id);
+    
+# # @bot.on(events.NewMessage(pattern="/wallet"))
+# # async def wallet(event):
+# #     user_id = event.from_id
+# #     body = dict(user_id = user_id)
+# #     response = requests.post(url+"wallet", data = body)
+# #     await event.respond(f"Your Wallet: {response.json}")
+
+# def main():
+#     """Start the bot."""
+#     bot.run_until_disconnected()
+
+# if __name__ == '__main__':
+#     # path = importlib.util.find_spec('./modules/ping') 
+#     # m = path.loader.load_module() 
+#     import_all_modules('modules')
+#     # mod = importlib.import_module('ping')
+#     # print(mod.__name__)
+#     main()
