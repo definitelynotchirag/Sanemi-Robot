@@ -5,12 +5,17 @@ import os
 from dotenv import load_dotenv,dotenv_values;
 import requests,asyncio
 import asyncpg
-import psycopg2;
+import psycopg2,aiopg;
 from psycopg2 import sql
 import time,datetime
 import pymongo
 import importlib,sys
 import logging
+import motor.motor_asyncio
+import sqlite3
+import aiosqlite
+
+
 
 load_dotenv()
 
@@ -38,30 +43,35 @@ api_hash = os.getenv("API_HASH")
 bot_token = os.getenv("BOT_TOKEN")
 log_channel = os.getenv("LOG_CHANNEL")
 
-mongoclient = pymongo.MongoClient(os.getenv('MONGODB'))
-mydb = mongoclient["testing"]
-mycol = mydb["users"]
 
 pool = None
 
-async def init_pool():
-    global pool
-    pool = await asyncpg.create_pool(
-        host=os.getenv("DBHOST"),
-        database=os.getenv("DBNAME"),
-        user=os.getenv("DBUSER"),
-        password=os.getenv("DBPASSWORD"))
+# con = sqlite3.connect('DB/sql.db')
+# db = await aiosqlite.connect('DB/sql.db')
 
+# cursor = db.cursor()
+# conn = psycopg2.connect(
+#     host=os.getenv("DBHOST"),
+#     database=os.getenv("DBNAME"),
+#     user=os.getenv("DBUSER"),
+#     password=os.getenv("DBPASSWORD"),
+#     )
 
-conn = psycopg2.connect(
-    host=os.getenv("DBHOST"),
-    database=os.getenv("DBNAME"),
-    user=os.getenv("DBUSER"),
-    password=os.getenv("DBPASSWORD"),
-    )
-
-cur = conn.cursor()       
+# cur = conn.cursor()       
         
+_db_connection = None
+
+async def init_db():
+    global _db_connection
+    if _db_connection is None:
+        _db_connection = await aiosqlite.connect('DB/sql.db')
+
+async def get_db():
+    if _db_connection is None:
+        raise RuntimeError("The database connection has not been initialized. Call init_db() first.")
+    return _db_connection
+
+
         
 url: str = os.environ.get("SUPABASE_URL")
 key: str = os.environ.get("SUPABASE_KEY")
@@ -69,6 +79,7 @@ supabase: Client = create_client(url, key)
 
 
 bot = TelegramClient('bot', api_id, api_hash).start(bot_token=bot_token)
+bot.parse_mode = 'md'
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(init_pool())
+# loop = asyncio.get_event_loop()
+# loop.run_until_complete(init_pool())

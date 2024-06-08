@@ -3,3 +3,4 @@ bot.session
 bot.session-journal
 __pycache__
 log.txt
+DB

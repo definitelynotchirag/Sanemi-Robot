@@ -1,24 +1,28 @@
-from SanemiBot import pool;
-import psycopg2;
+from SanemiBot import get_db;
+
 
 async def checkadduser(user_id):
+    db = await get_db()
     try:
-        async with pool.acquire() as cur:
-            await cur.execute(f"""
-        INSERT INTO user_list (user_id, wallet) 
-        VALUES ({user_id}, 100) 
-        ON CONFLICT (user_id,wallet) DO NOTHING;
-    """)
-    except (psycopg2.DatabaseError, Exception) as error:
+        await db.execute(f"""
+                        INSERT INTO user_list (USERID, WALLET) 
+                        VALUES ({user_id}, 100) 
+                        ON CONFLICT (USERID) DO NOTHING;
+                    """)
+        await db.commit()
+    except  Exception as error:
         raise error
 
 async def getwallet(user_id):
+    db = await get_db()
     await checkadduser(user_id=user_id)
     try:
-        async with pool.acquire() as cur:
-            wallet_value = await cur.fetchval("""
-                    SELECT wallet FROM user_list WHERE user_id = $1
-                """, user_id)
-            return wallet_value
-    except (psycopg2.DatabaseError, Exception) as error:
+
+        cursor = await db.execute(f"""
+                            SELECT wallet FROM user_list WHERE USERID = {user_id}
+                        """)
+        wallet_value = await cursor.fetchone()
+        return wallet_value[0]
+    except Exception as error:
         raise error
+    
