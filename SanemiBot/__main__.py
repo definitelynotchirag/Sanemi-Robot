@@ -3,7 +3,7 @@ import os
 from SanemiBot import bot,log_channel,init_db
 from telethon import events
 import asyncio
-from SanemiBot.utils import user
+from SanemiBot.utils import groups, users
 
 def import_all_modules(folder_path):
     for file_name in os.listdir(folder_path):
@@ -14,12 +14,18 @@ def import_all_modules(folder_path):
 @bot.on(events.NewMessage)
 async def adduser(event):
     try:
-        user_id = event.from_id.user_id
-    except Exception as e:
         user_id = event.peer_id.user_id
+    except Exception as e:
+        user_id = event.from_id.user_id
+        chat = event.chat
+        chat_id = chat.id
+        chat_title = chat.title if hasattr(chat, 'title') else False
+        if chat_title:
+             await groups.checkaddgroup(chat_id,chat_title)
         
+
     try:
-        await user.checkadduser(user_id=user_id)
+        await users.checkadduser(user_id=user_id)
     except Exception as e:
         msg = f'''
         NEW ERROR HAS OCCURED:\n
@@ -39,25 +45,6 @@ async def start(event):
 async def help(event):
     await event.respond('What Help Do You Need?');
 
-
-@bot.on(events.NewMessage(pattern="/wallet"))
-async def wallet(event):
-    try:
-        user_id = event.from_id.user_id
-    except Exception as e:
-        user_id = event.peer_id.user_id
-        
-    await user.checkadduser(user_id)
-    try:
-        wallet = await user.getwallet(user_id=user_id)
-    except Exception as e:
-        msg = f'''
-        NEW ERROR HAS OCCURED:\n
-        {str(e)}
-        '''
-        await bot.send_message(log_channel,msg)
-        
-    await event.respond(f'Wallet: `{wallet}ֆ`');
 
     
 async def main():
