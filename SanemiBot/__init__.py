@@ -41,7 +41,7 @@ if utils_path not in sys.path:
 api_id = os.getenv("API_ID")
 api_hash = os.getenv("API_HASH")
 bot_token = os.getenv("BOT_TOKEN")
-log_channel = os.getenv("LOG_CHANNEL")
+log_channel = int(os.getenv("LOG_CHANNEL"))
 
 
 pool = None

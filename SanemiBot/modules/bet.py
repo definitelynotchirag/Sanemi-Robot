@@ -1,8 +1,10 @@
 from telethon import events
 from numerize import numerize
-import random,asyncio
-from SanemiBot import get_db,log_channel,bot
-from SanemiBot.utils import groups,converter,users
+import random,asyncio,datetime
+from SanemiBot import get_db,log_channel,bot,LOGGER
+from SanemiBot.utils import groups,converter,users,timediff
+from datetime import timezone
+
 
 @bot.on(events.NewMessage(pattern="/bet"))
 async def bet(event):
@@ -20,30 +22,46 @@ async def bet(event):
         return
         
     if(chat_id):
-        ison= await groups.checktoggle(user_id)
+        ison = await groups.checktoggle(user_id)
         if not ison:
             return
         
     try:
         msg = event.message
+        
+        if len(msg.text.split(' ')) < 3:
+            await event.respond("Invalid Syntax! Use /bet <amount> <black/white>")
+            return
+        
+        lastbettime = await timediff.getbettime(user_id)
+        if lastbettime is None:
+            xx = 20
+        else:
+            xx = timediff.time_difference(lastbettime)
+
+        if xx < 20:
+            await event.respond(f"Wait! You can bet again in {20-int(xx)} secs.")
+            return
 
         userchoice = msg.text.split(' ')[-1]
         amount1 = msg.text.split(' ')[1]
         amount = abs(int(converter.cstn(amount1)))
         numerizedbetamount = numerize.numerize(amount, 3)
         
-        message = await event.respond( '⚫')
-        await asyncio.sleep(0.2)
 
-        if userchoice == "b":
+        if userchoice in ['b', 'black']:
             usrchoice = "black"
-        elif userchoice == "w":
+        elif userchoice in ['w', 'white']:
             usrchoice = "white"
         else:
-            usrchoice = userchoice
+            await event.respond("Invalid Choice! Choose between Black or White")
+            return
 
         choice = random.choice(['black', 'white'])
 
+        message = await event.respond( '⚫')
+        await asyncio.sleep(0.2)
+        
         await bot.edit_message(event.chat_id, message.id, '⚪')
         await asyncio.sleep(0.2)
         
@@ -75,9 +93,11 @@ async def bet(event):
                 await users.updatewallet(user_id, newm)
                 await bot.edit_message(event.chat_id, message.id,f"Lost!Took {numerizedbetamount} from your wallet.")
                 
+        await timediff.setbettime(user_id)
+                
     except Exception as e:
         raise e
-        # print(f"An error occurred: {e}")
+        LOGGER.error(e)
         
         
                 

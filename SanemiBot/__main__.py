@@ -13,19 +13,18 @@ def import_all_modules(folder_path):
             
 @bot.on(events.NewMessage)
 async def adduser(event):
-    try:
-        user_id = event.peer_id.user_id
-    except Exception as e:
-        user_id = event.from_id.user_id
-        chat = event.chat
-        chat_id = chat.id
-        chat_title = chat.title if hasattr(chat, 'title') else False
-        if chat_title:
-             await groups.checkaddgroup(chat_id,chat_title)
+    sender = await event.get_sender()
+    username = sender.username
+    user_id = sender.id
+    chat = event.chat
+    chat_id = chat.id
+    chat_title = chat.title if hasattr(chat, 'title') else False
+    if chat_title:
+         await groups.checkaddgroup(chat_id,chat_title)
         
 
     try:
-        await users.checkadduser(user_id=user_id)
+        await users.checkadduser(username=username,user_id=user_id)
     except Exception as e:
         msg = f'''
         NEW ERROR HAS OCCURED:\n
@@ -44,7 +43,6 @@ async def start(event):
 @bot.on(events.NewMessage(pattern="/help"))
 async def help(event):
     await event.respond('What Help Do You Need?');
-
 
     
 async def main():

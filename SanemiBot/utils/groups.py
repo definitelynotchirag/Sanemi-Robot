@@ -11,7 +11,7 @@ async def checkaddgroup(groupid,groupname):
             await db.commit()
     except Exception as e:
         raise e
-        LOGGER.error(str(e))
+        LOGGER.error(e)
         
 async def checktoggle(groupid):
     db = await get_db()
@@ -27,7 +27,7 @@ async def checktoggle(groupid):
             return True
     except Exception as e:
         raise e
-        LOGGER.error(str(e))
+        LOGGER.error(e)
     
     
     
