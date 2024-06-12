@@ -77,7 +77,7 @@ async def bet(event):
                 pass
 
         if usrchoice.lower() == choice:
-            oldm = abs(int(await users.getwallet(user_id)))
+            oldm = abs(int((await users.getwallet(user_id))[0]))
             if amount > oldm:
                 await event.respond("Bet Something which you can afford")
             else:
@@ -85,7 +85,7 @@ async def bet(event):
                 await users.updatewallet(user_id, newm)
                 await bot.edit_message(event.chat_id, message.id, f"You Won! Added {numerizedbetamount} to your wallet.")
         else:
-            oldm = abs(int(await users.getwallet(user_id)))
+            oldm = abs(int((await users.getwallet(user_id))[0]))
             if amount > oldm:
                 await bot.edit_message(event.chat_id, message.id,"You don't have enough Money to bet.")
             else:

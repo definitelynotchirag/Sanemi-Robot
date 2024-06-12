@@ -35,8 +35,8 @@ async def checkadduser(user_id,username = "SanemiUser"):
         raise error
     
 
-    
-async def get_user_info(db, user_id):
+async def get_user_info(user_id):
+    db = await get_db()
     async with db.execute("SELECT * FROM user_list WHERE user_id = ?", (user_id,)) as cursor:
         row = await cursor.fetchone()
         if row:
@@ -52,10 +52,10 @@ async def getwallet(user_id):
     try:
 
         cursor = await db.execute(f"""
-                            SELECT wallet FROM user_list WHERE user_id = {user_id};
+                            SELECT wallet,diamonds FROM user_list WHERE user_id = {user_id};
                         """)
         wallet_value = await cursor.fetchone()
-        return wallet_value[0]
+        return wallet_value
     except Exception as error:
         raise error
     
@@ -65,6 +65,7 @@ async def updatewallet(user_id,amount):
         cursor = await db.execute(f"""
                                   UPDATE user_list SET wallet = {amount} WHERE user_id = {user_id};
                                   """)
+        await db.commit()
     except Exception as error:
         LOGGER.error(error)
     
@@ -75,10 +76,59 @@ async def setwallet(user_id,amount):
         cursor = await db.execute(f"""
                                   UPDATE user_list SET wallet = {amount} WHERE user_id = {user_id};
                                   """)
+        await db.commit()
     except Exception as error:
         LOGGER.error(error)
     
     
+async def gettokens(user_id):
+    db = await get_db()
+    await checkadduser(user_id=user_id)
+    try:
+
+        cursor = await db.execute(f"""
+                            SELECT tokens FROM user_list WHERE user_id = {user_id};
+                        """)
+        wallet_value = await cursor.fetchone()
+        return wallet_value[0]
+    except Exception as error:
+        raise error
+    
+async def updatetokens(user_id,amount):
+    db = await get_db()
+    try:
+        cursor = await db.execute(f"""
+                                  UPDATE user_list SET tokens = {amount} WHERE user_id = {user_id};
+                                  """)
+        await db.commit()
+    except Exception as error:
+        LOGGER.error(error)
+    
+    
+async def getdiamonds(user_id):
+    db = await get_db()
+    await checkadduser(user_id=user_id)
+    try:
+
+        cursor = await db.execute(f"""
+                            SELECT diamonds FROM user_list WHERE user_id = {user_id};
+                        """)
+        wallet_value = await cursor.fetchone()
+        return wallet_value[0]
+    except Exception as error:
+        raise error
+    
+async def updatediamonds(user_id,amount):
+    db = await get_db()
+    try:
+        cursor = await db.execute(f"""
+                                  UPDATE user_list SET diamonds = {amount} WHERE user_id = {user_id};
+                                  """)
+        await db.commit()
+    except Exception as error:
+        LOGGER.error(error)
+        
+        
 async def checkpassive(user_id):
     db = await get_db()
     try:
@@ -100,10 +150,7 @@ async def setpassive(user_id, ispassive):
     except Exception as error:
         LOGGER.error(error)
     
-    
-    
-    
-    
+
 async def get_top_users():
     db = await get_db()
     try:

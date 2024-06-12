@@ -5,6 +5,7 @@ from telethon import events
 import asyncio
 from SanemiBot.utils import groups, users
 
+
 def import_all_modules(folder_path):
     for file_name in os.listdir(folder_path):
         if file_name.endswith('.py'):
@@ -44,7 +45,6 @@ async def start(event):
 async def help(event):
     await event.respond('What Help Do You Need?');
 
-    
 async def main():
     await init_db()
     await bot.run_until_disconnected()

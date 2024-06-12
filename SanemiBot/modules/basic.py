@@ -32,6 +32,6 @@ async def wallet(event):
         '''
         await bot.send_message(log_channel,msg)
         
-    await event.respond(f"{first_name}'s Wallet: `{wallet}ֆ`");
+    await event.respond(f"{first_name}'s Wallet: `{wallet[0]}ֆ`\nDiamonds: `{wallet[1]}`");
 
     
