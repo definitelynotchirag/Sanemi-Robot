@@ -4,7 +4,7 @@ from telethon import events
 
 @bot.on(events.NewMessage(pattern="/top"))
 async def top(event):
-    str1 = "# 🏆 Top Users 🏆\n\n"
+    str1 = "🏆𝗟𝗘𝗔𝗗𝗘𝗥𝗕𝗢𝗔𝗥𝗗 ⫶\n\n"
     msg = await event.respond(file = "https://telegra.ph/file/a23ad4b0691af4d44cc31.jpg")
     topusers = await users.get_top_users()
     count = 0
