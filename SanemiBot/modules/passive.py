@@ -4,6 +4,11 @@ from telethon import events
 
 @bot.on(events.NewMessage(pattern="/passive"))
 async def passive(event):
+    user_id = event.sender_id
+    
+    if not await users.checkverified(user_id):
+        return
+    
     try:
         ps = event.message.text.split(' ')[1]
     except IndexError:
@@ -18,7 +23,6 @@ async def passive(event):
         await event.respond("Invalid argument! Use 'on' or 'off'!")
         return
     
-    user_id = event.sender_id
     try:
         ispassive = await users.checkpassive(user_id)
         if ispassive and not arg:

@@ -5,7 +5,7 @@ from SanemiBot import get_db,log_channel,bot,LOGGER
 from SanemiBot.utils import groups,converter,users,timediff
 from datetime import timezone
 
-
+print("Imported bet.py HAHAHAHAHAAH")
 @bot.on(events.NewMessage(pattern="/bet"))
 async def bet(event):
     try:

@@ -11,6 +11,9 @@ async def shop(event):
     chat_id = event.chat_id
     msg = event.message
     
+    if not await users.checkverified(user_id):
+        return
+    
     if(chat_id):
         ison = await groups.checktoggle(user_id)
         if not ison:

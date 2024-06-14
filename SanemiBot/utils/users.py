@@ -34,7 +34,30 @@ async def checkadduser(user_id,username = "SanemiUser"):
     except  Exception as error:
         raise error
     
-
+async def updatenickname(user_id, nickname):
+    db = await get_db()
+    try:
+        cursor = await db.execute(f"""
+                                  UPDATE user_list SET nickname = ? WHERE user_id = ?;
+                                  """, (nickname, user_id))
+        await db.commit()
+    except Exception as error:
+        LOGGER.error(error)
+        
+async def checkverified(user_id):
+    db = await get_db()
+    try:
+        cursor = await db.execute(f"""
+                                  SELECT nickname FROM user_list WHERE user_id = {user_id};
+                                  """)
+        isverified = await cursor.fetchone()
+        if(isverified[0] == None):
+            return False
+        else:
+            return True
+    except Exception as error:
+        LOGGER.error(error)
+        
 async def get_user_info(user_id):
     db = await get_db()
     async with db.execute("SELECT * FROM user_list WHERE user_id = ?", (user_id,)) as cursor:

@@ -13,6 +13,9 @@ async def daily(event):
     chat_id = event.chat_id
     msg = event.message
     
+    if not await users.checkverified(user_id):
+        return
+    
     ispassive = await users.checkpassive(user_id)
     if(ispassive):
         await event.respond("Your Are in Passive Mode Turn it Off by using /passive off")

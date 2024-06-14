@@ -4,6 +4,9 @@ from telethon import events
 
 @bot.on(events.NewMessage(pattern="/top"))
 async def top(event):
+    user_id = event.sender_id
+    if not await users.checkverified(user_id):
+        return
     str1 = "# 🏆 Top Users 🏆\n\n"
     msg = await event.respond(file = "./Assets/leaderboard.jpg")
     topusers = await users.get_top_users()

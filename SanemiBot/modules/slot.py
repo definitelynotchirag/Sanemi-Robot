@@ -5,12 +5,14 @@ import asyncio
 
 @bot.on(events.NewMessage(pattern="/slot"))
 async def slot(event):
-    
     user = await event.get_sender()
     user_id = user.id
     chat_id = event.chat_id
     msg = event.message
 
+    if not await users.checkverified(user_id):
+        return
+    
     if len(msg.text.split(' ')) < 2:
         await event.respond("Invalid Syntax! Use /slot <amount>")
         return
