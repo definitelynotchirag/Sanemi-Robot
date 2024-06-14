@@ -36,14 +36,14 @@ async def adduser(event):
     try:
         userrr = await users.get_user_info(user_id)
         if not userrr and chat_title is False:
-            await event.reply("Hey, I am Sanemi A Game Bot Based on Anime Demon Slayer!\nLets start our journey!!",file='./Assets/introvideo.mp4',buttons = [[Button.inline("Start",data="intro")]])
+            await event.reply("Hey, I am Sanemi A Game Bot Based on Anime Demon Slayer!\nLets start our journey!!",file='https://telegra.ph/file/5ec6c9fd75b534ece0152.mp4',buttons = [[Button.inline("Start",data="intro")]])
             await users.checkadduser(username=username,user_id=user_id)
             
         elif not userrr and chat_title and iscommand:
             await event.reply("Hey! Meet me in Dm and Type /start to get started!",buttons = [[Button.url("Open Bot",url=f"t.me/SanemixBot")]])
         
         elif userrr and chat_title is False and userrr['nickname'] == None and not iswaiting:
-            await event.reply("Welcome Back! I am Sanemi A Game Bot Based on Anime Demon Slayer!\nLets start our journey!!",file='./Assets/introvideo.mp4',buttons = [[Button.inline("Start",data="intro")]])
+            await event.reply("Welcome Back! I am Sanemi A Game Bot Based on Anime Demon Slayer!\nLets start our journey!!",file='https://telegra.ph/file/5ec6c9fd75b534ece0152.mp4',buttons = [[Button.inline("Start",data="intro")]])
             await users.checkadduser(username=username,user_id=user_id)
         
         elif userrr and chat_title and userrr['nickname'] == None and iscommand:
